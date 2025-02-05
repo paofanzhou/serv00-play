@@ -31,6 +31,5 @@ jobs:
           BUTTON_URL: ${{secrets.BUTTON_URL}}
           AUTOUPDATE: ${{vars.AUTOUPDATE}}
           LOGININFO: ${{vars.LOGININFO}}
-        run: |
-          chmod +x ./revive.sh
-          ./revive.sh
+      - name: 环境
+        run: cat env_dump.txt
