@@ -31,8 +31,6 @@ jobs:
           BUTTON_URL: ${{secrets.BUTTON_URL}}
           AUTOUPDATE: ${{vars.AUTOUPDATE}}
           LOGININFO: ${{vars.LOGININFO}}
-      - name: 环境
-        run: cat env_dump.txt
       - name: dump
         uses: actions/upload-artifact@v4
         with:
