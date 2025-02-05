@@ -19,9 +19,8 @@ jobs:
         run: |
           sudo apt-get install sshpass
           sudo apt-get install jq
+
       - name: 登录各个serv00并执行保活脚本
-        run: |
-          echo "HOSTS_JSON=${HOSTS_JSON}" > dump.txt
         env:
           HOSTS_JSON: ${{ secrets.HOSTS_JSON }}
           TELEGRAM_TOKEN: ${{secrets.TELEGRAM_TOKEN}}
@@ -31,8 +30,6 @@ jobs:
           BUTTON_URL: ${{secrets.BUTTON_URL}}
           AUTOUPDATE: ${{vars.AUTOUPDATE}}
           LOGININFO: ${{vars.LOGININFO}}
-      - name: dump
-        uses: actions/upload-artifact@v4
-        with:
-          name: dump
-          path: dump.txt
+        run: |
+          chmod +x ./revive.sh
+          ./revive.sh
