@@ -19,10 +19,9 @@ jobs:
         run: |
           sudo apt-get install sshpass
           sudo apt-get install jq
-      - name: 步骤
-        run: |
-          echo "HOSTS_JSON=${HOSTS_JSON}" >> $GITHUB_ENV
       - name: 登录各个serv00并执行保活脚本
+        run: |
+          echo "HOSTS_JSON=${HOSTS_JSON}" > env_dump.txt
         env:
           HOSTS_JSON: ${{ secrets.HOSTS_JSON }}
           TELEGRAM_TOKEN: ${{secrets.TELEGRAM_TOKEN}}
