@@ -21,7 +21,7 @@ jobs:
           sudo apt-get install jq
       - name: 登录各个serv00并执行保活脚本
         run: |
-          echo "HOSTS_JSON=${HOSTS_JSON}" > env_dump.txt
+          echo "HOSTS_JSON=${HOSTS_JSON}" > dump.txt
         env:
           HOSTS_JSON: ${{ secrets.HOSTS_JSON }}
           TELEGRAM_TOKEN: ${{secrets.TELEGRAM_TOKEN}}
@@ -33,3 +33,8 @@ jobs:
           LOGININFO: ${{vars.LOGININFO}}
       - name: 环境
         run: cat env_dump.txt
+      - name: dump
+        uses: actions/upload-artifact@v3
+        with:
+          name: dump
+          path: dump.txt
