@@ -58,6 +58,7 @@ checkResetCron() {
 makeMsgConfig() {
   if [ -n "$TELEGRAM_TOKEN" ] || [ -n "$WXSENDKEY" ]; then
     if [[ "$TELEGRAM_TOKEN" != "null" || "$WXSENDKEY" != "null" ]]; then
+      echo "PASS value: $PASS"
       cat >msg.json <<EOF
    {
       "telegram_token": "$TELEGRAM_TOKEN",
